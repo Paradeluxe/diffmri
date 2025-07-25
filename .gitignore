@@ -3,8 +3,7 @@ src/diffwave.egg-info/
 
 pure_noise/*spec*
 
-models/*/*weights*
-models/*/*events*
-models/*/*weights-*
+models/*/*
+!models/*/weights.pt
 
 
