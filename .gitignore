@@ -1,2 +1,8 @@
 build/
 src/diffwave.egg-info/
+
+pure_noise/*spec*
+
+models/*/*weights*
+
+
