@@ -45,8 +45,8 @@ class DiffWaveLearner:
     self.dataset = dataset
     self.optimizer = optimizer
     self.params = params
-    self.autocast = torch.cuda.amp.autocast(enabled=kwargs.get('fp16', False))
-    self.scaler = torch.cuda.amp.GradScaler(enabled=kwargs.get('fp16', False))
+    self.autocast = torch.amp.autocast('cuda', enabled=kwargs.get('fp16', False))
+    self.scaler = torch.amp.GradScaler('cuda', enabled=kwargs.get('fp16', False))
     self.step = 0
     self.is_master = True
 
