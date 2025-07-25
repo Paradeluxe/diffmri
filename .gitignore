@@ -4,7 +4,7 @@ src/diffwave.egg-info/
 pure_noise/*spec*
 
 models/*/*weights*
-models/*/events.out.tfevents*
+models/*/*events*
 
 
 
