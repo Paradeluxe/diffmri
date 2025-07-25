@@ -68,8 +68,8 @@ for i, filename in enumerate(mixture_files):
     # 由于DiffWave需要梅尔频谱图作为输入，我们需要生成它
     mel_transform = torchaudio.transforms.MelSpectrogram(
         sample_rate=sample_rate,
-        n_fft=256,
-        hop_length=64,
+        n_fft=1024,
+        hop_length=256,
         n_mels=80
     ).to(device)
     
