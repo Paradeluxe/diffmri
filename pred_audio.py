@@ -68,8 +68,8 @@ for i, filename in enumerate(mixture_files):
     # 由于DiffWave需要梅尔频谱图作为输入，我们需要生成它
     mel_transform = torchaudio.transforms.MelSpectrogram(
         sample_rate=sample_rate,
-        n_fft=1024,
-        hop_length=256,
+        n_fft=256,
+        hop_length=64,
         n_mels=80
     ).to(device)
     
@@ -78,18 +78,16 @@ for i, filename in enumerate(mixture_files):
     spectrogram = torch.log(mel_transform(waveform) + epsilon)
     
     # 进行预测
-    try:
-        # 使用fast_sampling以提高速度
-        audio, sr = diffwave_predict(spectrogram, latest_model, fast_sampling=True)
-        
-        # 输出文件路径
-        output_filename = f"enhanced_{filename}"
-        output_path = os.path.join(output_dir, output_filename)
-        
-        # 保存音频
-        torchaudio.save(output_path, audio.cpu(), sr)
-        print(f'Saved enhanced audio to {output_path}')
-    except Exception as e:
-        print(f'Error processing {filename}: {str(e)}')
+    # 使用fast_sampling以提高速度
+    audio, sr = diffwave_predict(spectrogram, latest_model, fast_sampling=True)
+    
+    # 输出文件路径
+    output_filename = f"enhanced_{filename}"
+    output_path = os.path.join(output_dir, output_filename)
+    
+    # 保存音频
+    torchaudio.save(output_path, audio.cpu(), sr)
+    print(f'Saved enhanced audio to {output_path}')
+
 
 print('All files processed.')
