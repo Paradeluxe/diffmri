@@ -98,7 +98,7 @@ class DiffWaveLearner:
     except FileNotFoundError:
       return False
 
-  def train(self, max_steps=None):
+  def train(self, max_steps=1000):
     device = next(self.model.parameters()).device
     while True:
       for features in tqdm(self.dataset, desc=f'Epoch {self.step // len(self.dataset)}') if self.is_master else self.dataset:

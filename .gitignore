@@ -5,6 +5,6 @@ pure_noise/*spec*
 
 models/*/*weights*
 models/*/*events*
-
+models/*/*-*
 
 
